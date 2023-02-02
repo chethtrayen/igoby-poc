@@ -1,4 +1,4 @@
-## IGOBY POC
+## IGOBY POC(Proof of Concept)
 
 Igoby is a web application that helps people pronoun names. Igoby uses user created content to be consume by other users.
 
