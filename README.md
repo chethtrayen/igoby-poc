@@ -17,6 +17,7 @@ Igoby is a web application that helps people pronoun names. Igoby uses user crea
   - [Typescript](https://www.typescriptlang.org/)
   - [React](https://reactjs.org/)
   - [React-audio-voice-recorder](https://www.npmjs.com/package/react-audio-voice-recorder)
+  - [Tailwindcss](https://tailwindcss.com/)
 - Backend
   - [Typescript](https://www.typescriptlang.org/)
   - [Express](https://github.com/expressjs/express)

@@ -1,17 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
+
 import "./App.css";
+import { useReactMediaRecorder } from "react-media-recorder";
+
+import AudioPlayer from "./features/audio/components/AudioPlayer";
+import Recorder from "./features/audio/components/Recorder";
 
 function App() {
+  const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true });
+  const [audioBlob, setAudioBlob] = useState<string>();
+
+  // Ensure a rerender on AudioPlayer when new audio is sourced
+  useEffect(() => {
+    setAudioBlob(status === "stopped" ? mediaBlobUrl : undefined);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <div>{status}</div>
+      <p className="text-3xl text-gray-700 font-bold mb-5">Welcome!</p>
+      <Recorder startRecording={startRecording} stopRecording={stopRecording} status={status} />
+      <AudioPlayer audioBlob={audioBlob} />
     </div>
   );
 }
