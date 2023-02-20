@@ -1,13 +1,13 @@
 interface AudioPlayerProps {
-  audioBlob?: string;
+  audioSrc?: string;
 }
 
-const AudioPlayer = ({ audioBlob }: AudioPlayerProps) => {
-  if (!audioBlob) return null;
+const AudioPlayer = ({ audioSrc }: AudioPlayerProps) => {
+  if (!audioSrc) return null;
 
   return (
     <audio controls>
-      <source src={audioBlob} />
+      <source src={audioSrc} />
     </audio>
   );
 };
