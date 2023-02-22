@@ -1,5 +1,5 @@
 import { StatusMessages } from "react-media-recorder";
-import { useRecorder } from "../hooks/recorder";
+import { useRecorder } from "../hooks/useRecorder";
 
 interface RecordingBtnProps {
   startRecording: () => void;
@@ -12,10 +12,14 @@ const RecordingBtn = ({ startRecording, status, stopRecording }: RecordingBtnPro
 
   return (
     <button
-      className="rounded-full border items-center justify-center border-gray-600 flex p-2 h-16 w-16"
+      className="rounded-full border items-center justify-center border-gray-300 flex p-2 h-16 w-16"
       onClick={() => (isRecording ? stopRecording() : startRecording())}
     >
-      {isRecording ? <div className="rounded bg-black w-6 h-6" /> : <div className="rounded-full bg-red-500 w-6 h-6" />}
+      {isRecording ? (
+        <div className="rounded-sm bg-black w-6 h-6" />
+      ) : (
+        <div className="rounded-full bg-red-500 w-6 h-6" />
+      )}
     </button>
   );
 };
