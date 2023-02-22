@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import HomePage from "./features/home/pages/Home";
-import RecordingPage from "./features/audio/pages/Recording";
-import SearchPage from "./features/audio/pages/Search";
+import RecordingPage from "./features/name/pages/Recording";
+import SearchPage from "./features/name/pages/Search";
 
 import "./index.css";
 
