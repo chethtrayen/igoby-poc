@@ -1,6 +1,8 @@
 import { Request, Response, Router } from "express";
+import multer from "multer";
 
 const router = Router();
+const upload = multer();
 
 router.get("/", (req: Request, res: Response) => {
   try {
@@ -10,8 +12,10 @@ router.get("/", (req: Request, res: Response) => {
   }
 });
 
-router.post("/save", (req: Request, res: Response) => {
+router.post("/save", upload.single("name"), (req: Request, res: Response) => {
   try {
+    console.log(req.body);
+    res.json({ success: true });
   } catch (e) {
     res.status(400).json({ success: false });
   }

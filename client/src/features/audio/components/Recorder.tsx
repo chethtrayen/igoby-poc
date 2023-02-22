@@ -1,7 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import { StatusMessages } from "react-media-recorder";
-import { useSaveName } from "../api/saveName";
-import { useRecorder } from "../hooks/recorder";
+
+import DeleteBtn from "./DeleteBtn";
+import RecordingBtn from "./RecordingBtn";
+import SaveBtn from "./SaveBtn";
 
 interface RecorderProps {
   audioSrc?: string;
@@ -12,43 +14,13 @@ interface RecorderProps {
 }
 
 const Recorder = ({ audioSrc, setAudioSrc, startRecording, status, stopRecording }: RecorderProps) => {
-  const { isRecording } = useRecorder(status);
-  const { saveName } = useSaveName(setAudioSrc);
-
   return (
     <div className="flex flex-row" style={{ gap: "10px" }}>
-      {audioSrc ? (
-        <button
-          className="bg-red-500 rounded-full text-white font-bold p-2 h-16 w-16"
-          onClick={() => setAudioSrc(undefined)}
-        >
-          Delete
-        </button>
-      ) : (
-        <div className="h-16 w-16" />
-      )}
+      <DeleteBtn setAudioSrc={setAudioSrc} audioSrc={audioSrc} />
 
-      <button
-        className="rounded-full border items-center justify-center border-gray-600 flex p-2 h-16 w-16"
-        onClick={() => (isRecording ? stopRecording() : startRecording())}
-      >
-        {isRecording ? (
-          <div className="rounded bg-black w-6 h-6" />
-        ) : (
-          <div className="rounded-full bg-red-500 w-6 h-6" />
-        )}
-      </button>
+      <RecordingBtn startRecording={startRecording} status={status} stopRecording={stopRecording} />
 
-      {audioSrc ? (
-        <button
-          className="bg-green-500 rounded-full text-white font-bold p-2 h-16 w-16"
-          onClick={() => saveName(audioSrc)}
-        >
-          Save
-        </button>
-      ) : (
-        <div className="h-16 w-16" />
-      )}
+      <SaveBtn audioSrc={audioSrc} />
     </div>
   );
 };

@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <input className="shadow border rounded p-1" />
       <Recorder
         audioSrc={audioSrc}
         setAudioSrc={setAudioSrc}
@@ -32,12 +33,12 @@ function App() {
       />
       <AudioPlayer audioSrc={audioSrc} />
 
-      <input className="shadow border rounded mx-2 p-1" ref={inputRef} />
+      {/* <input className="shadow border rounded mx-2 p-1" ref={inputRef} />
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={triggerSearch}>
         Search
       </button>
 
-      {search.length > 3 ? <SearchResults search={search} /> : null}
+      {search.length > 3 ? <SearchResults search={search} /> : null} */}
     </div>
   );
 }
